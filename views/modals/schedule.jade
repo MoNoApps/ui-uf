@@ -1,0 +1,64 @@
+#scheduleModal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="scheduleModalLabel", aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h4.modal-title Schedule
+      .modal-body
+        form(role="form")
+          div(ng-show="!timeGroup")
+            h4 No time group selected for schedule
+          div(ng-show="timeGroup")
+            h5(ng-bind="'Project: ' + selectedProject.title + ' (' + selectedProject.id + ')'")
+            h5(ng-bind="'Ticket: ' + selectedTicket.summary + ' (' + selectedTicket.id + ')'")
+            h5(ng-bind="'Time entries selected: ' + timeGroup.length")
+
+            table.table.table-condensed.table-striped.table-bordered
+              tr(ng-repeat='entry in timeGroup')
+                td
+                  div(align='center')
+                    span(ng-bind='entry.description')
+                td
+                  div(align='center')
+                    span(ng-bind='entry.hours')
+              tr(ng-show='!timeGroup.length')
+                td(colspan='2')
+                  div(align='center') Schedule is emtpy
+
+            .row
+              .col-md-6
+                input.form-control(type="datetime-local", id="startDate"
+                , name="startDate", ng-model="startDate"
+                , placeholder="yyyy-MM-ddTHH:mm", required)
+              .col-md-6
+                input.form-control(type="datetime-local", id="endDate"
+                , name="endDate", ng-model="endDate"
+                , placeholder="yyyy-MM-ddTHH:mm", required)
+
+            .row
+              .col-md-12
+                h5 Repeat every
+              .col-md-2
+                label
+                  input(type='radio')
+                  | MO
+              .col-md-2
+                label
+                  input(type='radio')
+                  | TU
+              .col-md-2
+                label
+                  input(type='radio')
+                  | WE
+              .col-md-2
+                label TH
+                input(type='radio')
+              .col-md-2
+                label
+                  input(type='radio')
+                  | FR
+
+
+      .modal-footer
+        button.btn.btn-primary(type='button', data-dismiss='modal') Run
+        button.btn.btn-default(type='button', data-dismiss='modal') Close

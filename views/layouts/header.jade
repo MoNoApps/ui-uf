@@ -1,0 +1,20 @@
+.container
+  .navbar.navbar-inverse
+      .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-inverse-collapse')
+          a.navbar-brand(href='/') Alternative UI for Unfuddle
+        .navbar-collapse.collapse.navbar-inverse-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/') Register
+            li
+              a(href='/terms') Terms
+            li
+              a(href='/docs') Docs
+            li
+              h5(ng-show="token")
+                pre(ng-bind="token")
+          form.navbar-form.navbar-left
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(ng-show="token", ng-click="logout()") Logout

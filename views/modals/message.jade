@@ -1,0 +1,12 @@
+.modal.fade#messageModal(tabindex="-1", role="dialog", aria-labelled="messageModalLabel", aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal')
+          span(aria-hidden='true') ×
+          span.sr-only Close
+        h4.modal-title(ng-bind="message.title")
+      .modal-body
+        p(ng-bind="message.body")
+      .modal-footer
+        button.btn.btn-default(type='button', data-dismiss='modal') Close

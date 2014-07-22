@@ -1,0 +1,118 @@
+
+div
+  .container
+    .row(ng-show="showLogin")
+      .col-md-4
+        h2 What offers this site?
+        p Before use this software read
+          a(href="/terms") terms page.
+        p Lightweight website
+        p Create a schedulle of your common tasks
+        p Funny way to check your projects
+        p Group Tickets
+        p Custom and modern reports
+
+      .col-md-6
+        form.form-horizontal
+          fieldset
+              legend Enter your details
+              .form-group
+                label.col-lg-2.control-label(for='username') Username
+                .col-lg-10
+                  input#username.form-control(type="text"
+                  , ng-model="user.username", placeholder="Username")
+              .form-group
+                label.col-lg-2.control-label(for='password') Password
+                .col-lg-10
+                  input#password.form-control(type="password"
+                  , ng-model="user.password", placeholder="Password")
+              .form-group
+                label.col-lg-2.control-label(for='domain') Domain
+                .col-lg-10
+                  input#domain.form-control(type="text"
+                  , ng-model="user.domain", placeholder="Domain")
+              .form-group
+                .col-lg-10.col-lg-offset-2
+                  a.btn.btn-primary(ng-click="login()") Login
+
+      .col-md-2
+
+    .row(ng-show="showProjects")
+
+      .col-md-9
+        .row
+          .col-md-4
+            .row
+              .col-md-5
+                h4 Projects
+              .col-md-6
+                input.form-control(ng-model="projectSearch")
+              .col-md-1
+            .md-scroll
+              a.btn.btn-default.btn-lg.btn-block.btn-ellipsis(type="button"
+              , ng-class="{'btn-primary': project.ufstatus == 'active', '': ufstatus != 'active' }"
+              , ng-repeat="project in projects | filter:projectSearch", ng-click="ticketList(project)")
+                span.btn-content(ng-bind="project.short_name")
+
+          .col-md-8
+            div(ng-show="showTickets")
+              .row
+                .col-md-5
+                  h4 Tickets
+                .col-md-6
+                  input.form-control(ng-model="ticketSearch")
+              .md-scroll
+                a.btn.btn-default.btn-lg.btn-block.btn-ellipsis(type="button"
+                v, ng-class="{'btn-primary': ticket.ufstatus == 'active', '': ufstatus != 'active' }"
+                , ng-repeat="ticket in tickets | filter:ticketSearch", ng-click="timeList(ticket)")
+                  span.btn-content(ng-bind="ticket.summary")
+
+          .col-md-12
+            hr
+          .col-md-12
+            div(ng-show="showTimes")
+              .row
+                .col-md-5
+                  h4 Time Entries
+                .col-md-6
+                  input.form-control(ng-model="timeSearch")
+              .md-scroll
+                a.btn.btn-default.btn-lg.btn-block.btn-ellipsis(type="button"
+                , ng-class="{'btn-success': time.ufstatus == 'active', '': ufstatus != 'active' }"
+                , ng-repeat="time in times | filter:timeSearch", ng-click="selectTime(time)")
+                  span.btn-content(ng-bind="time.description + ' (Hours: '+ time.hours +')'")
+
+      .col-md-3(align="center")
+        div
+          h4 Actions
+          a.col-md-12.btn.btn-warning(ng-disabled="!timeGroup.length"
+          , data-toggle='modal', data-target='#scheduleModal'
+          , ng-bind="'Create schedule ' + ' ( Enties: ' + timeGroup.length + ' )'")
+            i.glyphicon.icon-gear
+          br
+          br
+          a.col-md-12.btn.btn-primary(data-toggle='modal', data-target='#viewerModal'
+          , ng-disabled="!selectedObject", ng-bind="'View current object'")
+            i.glyphicon.glyphicon-cog
+        div
+          h4 Stats
+          form(role="form")
+            table.table.table-condensed.table-striped.table-bordered
+              tr
+                th Name
+                th Value
+              tr(ng-repeat='(key,value) in stats')
+                td
+                  div(align='center')
+                    span(ng-bind='key')
+                td
+                  div(align='center')
+                    span(ng-bind='value')
+              tr(ng-show='stats.length==0')
+                td(colspan='2')
+                  div(align='center') Statistics is emtpy
+    hr
+
+  include ../modals/message
+  include ../modals/viewer
+  include ../modals/schedule

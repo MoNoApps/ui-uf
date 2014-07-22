@@ -1,0 +1,21 @@
+.md-scroll {
+  height: 1800px;
+  max-height: 180px;
+  overflow-y: scroll;
+}
+
+.lg-scroll {
+  height: 300px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.btn-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-content {
+  margin: 10px;
+}

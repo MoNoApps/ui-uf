@@ -1,0 +1,17 @@
+#viewerModal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="viewerModalLabel", aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h4.modal-title Viewer
+      .modal-body
+        form(role="form")
+          div(ng-show="selectedObject")
+            h4 Object preview
+            .lg-scroll
+              section(ng-repeat="(key, value) in selectedObject track by $index")
+                code(ng-bind="key + ': ' + value", ng-show="key != 'statuses'")
+          div(ng-show="!selectedObject")
+            h4 No object selected
+      .modal-footer
+        button.btn.btn-default(type='button', data-dismiss='modal') Close

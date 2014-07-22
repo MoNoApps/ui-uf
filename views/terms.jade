@@ -1,0 +1,33 @@
+doctype html
+html(ng-app='UIUFApp')
+  head
+    title UI-UF
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/font-awesome/css/font-awesome.min.css')
+
+  body
+    include layouts/header
+    .container-fluid
+      div
+        .container
+          .row
+            .col-md-4
+              h2 Terms
+              p We do not crypt your credentials.
+              p You will recieve a token, you must to keep it secret.
+              p This is an expermimental website.
+              p Software is provided as is without guarantees.
+
+            .col-md-6
+
+            .col-md-2
+
+          hr
+
+    include layouts/footer
+
+    script(type='text/javascript', src='/js/libs/jquery.min.js')
+    script(type='text/javascript', src='/js/libs/angular.min.js')
+    script(type='text/javascript', src='/js/libs/bootstrap.min.js')
+    script(type='text/javascript', src='/js/ng/app.js')
+    script(type='text/javascript', src='/js/ng/controllers/dashboardCtrl.js')
