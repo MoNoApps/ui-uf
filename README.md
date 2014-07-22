@@ -24,9 +24,9 @@ Change config.json leveldb key. mongodb key is for future usage.
 node app.js
 
 ## Todos
-  1 Delete credentias after certain time.
-  2 Remember tasks
-  3 Make work schedulle
-  4 Ensure stats are fine
-  5 Enable persistence with mongodb
-  6 Define new reports
+  - 1 Delete credentias after certain time.
+  - 2 Remember tasks
+  - 3 Make work schedulle
+  - 4 Ensure stats are fine
+  - 5 Enable persistence with mongodb
+  - 6 Define new reports
