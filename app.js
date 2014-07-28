@@ -46,11 +46,11 @@ app.post('/api/login', function(req, res) {
 						res.json({data: false, err: err});
 					}else{
 						ldb.put(newKey, JSON.stringify(values), function(key, err){
-								res.json({data: key, err: false});
+								res.json({data: key, err: err});
 						});
 					}
-			})
-	})
+			});
+	});
 
 });
 
@@ -67,8 +67,8 @@ app.get('/api/projects', function(req, res) {
 
 					//retrieve project list
 					uf.project.find(function(data, err){
-							res.json({projects:data, err:err})
-					})
+							res.json({projects:data, err:err});
+					});
 				}
 		});
 	}else{
@@ -89,8 +89,8 @@ app.get('/api/project/:id/tickets', function(req, res) {
 
 					//retrieve ticket list
 					uf.ticket.find(req.params.id,function(data, err){
-							res.json({tickets:data, err:err})
-					})
+							res.json({tickets:data, err:err});
+					});
 				}
 		});
 	}else{
@@ -111,8 +111,8 @@ app.get('/api/project/:id/ticket/:tid/times', function(req, res) {
 
 					//retrieve ticket list
 					uf.time.find(req.params.id,req.params.tid,function(data, err){
-							res.json({times:data, err:err})
-					})
+							res.json({times:data, err:err});
+					});
 				}
 		});
 	}else{
