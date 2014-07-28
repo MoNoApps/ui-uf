@@ -41,7 +41,7 @@ app.controller('DashboardCtrl', function DashboardCtrl($scope, $http) {
         }
       })
       .error(function(){
-        console.log("error")
+        console.log("error");
       });
     };
 
@@ -59,7 +59,7 @@ app.controller('DashboardCtrl', function DashboardCtrl($scope, $http) {
       })
       .error(function(){
         //TODO:  add a message
-        console.log("error")
+        console.log("error");
       });
     };
 
@@ -78,7 +78,7 @@ app.controller('DashboardCtrl', function DashboardCtrl($scope, $http) {
         $scope.tickets = data.tickets;
       })
       .error(function(){
-        console.log("error")
+        console.log("error");
       });
     };
 
@@ -96,13 +96,13 @@ app.controller('DashboardCtrl', function DashboardCtrl($scope, $http) {
         rebuildTimeList();
       })
       .error(function(){
-        console.log("error")
+        console.log("error");
       });
     };
 
     $scope.selectTime = function(time){
       switchStatus(time,'isTime');
-    }
+    };
 
     $scope.checkForToken = function(){
       $scope.token = localStorage.getItem('token');
@@ -111,7 +111,7 @@ app.controller('DashboardCtrl', function DashboardCtrl($scope, $http) {
       }
     };
 
-    switchStatus = function (value, type){
+    var switchStatus = function (value, type){
 
       //Only one selected
       switch (type){
@@ -125,7 +125,7 @@ app.controller('DashboardCtrl', function DashboardCtrl($scope, $http) {
           break;
       }
 
-      if(value.ufstatus == 'active'){
+      if(value.ufstatus === 'active'){
         value.ufstatus = '';
       }else{
         value.ufstatus = 'active';
@@ -141,13 +141,13 @@ app.controller('DashboardCtrl', function DashboardCtrl($scope, $http) {
       $scope.selectedObject = value;
     };
 
-    rebuildTimeList = function() {
+    var rebuildTimeList = function() {
       $scope.timeGroup = [];
       $scope.stats['Sum Time'] = 0;
       $scope.stats['Selected Time'] = 0;
 
       for (var idx in $scope.times){
-        if($scope.times[idx].ufstatus == 'active'){
+        if($scope.times[idx].ufstatus === 'active'){
           $scope.timeGroup.push($scope.times[idx]);
           $scope.stats['Selected Time'] += $scope.times[idx].hours;
         }
@@ -156,17 +156,17 @@ app.controller('DashboardCtrl', function DashboardCtrl($scope, $http) {
       }
     };
 
-    switchTicketList = function() {
+    var switchTicketList = function() {
       for (var idx in $scope.tickets){
-        if($scope.tickets[idx].ufstatus == 'active'){
+        if($scope.tickets[idx].ufstatus === 'active'){
           $scope.tickets[idx].ufstatus = '';
         }
       }
     };
 
-    switchProjectList = function() {
+    var switchProjectList = function() {
       for (var idx in $scope.projects){
-        if($scope.projects[idx].ufstatus == 'active'){
+        if($scope.projects[idx].ufstatus === 'active'){
           $scope.projects[idx].ufstatus = '';
         }
       }
