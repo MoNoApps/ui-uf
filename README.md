@@ -1,4 +1,5 @@
 # Alternative UI For Unfuddle
+[![Code Climate](https://codeclimate.com/github/MoNoApps/ui-uf.png)](https://codeclimate.com/github/MoNoApps/ui-uf)
 
 # Warnings
 This app it is not ready for production usage.
